@@ -43,6 +43,22 @@ public class Consultation {
     public Consultation(Date date_consultation) {
         this.date_consultation = date_consultation;
     }
+
+    public Medecin getMedecin() {
+        return medecin;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setMedecin(Medecin medecin) {
+        this.medecin = medecin;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
     
     
     
