@@ -11,10 +11,10 @@ import java.sql.Connection;
  *
  * @author ELYOUSFI
  */
-public class IMetierImpl implements IMetier{
+public class ICabinetMetierImpl implements ICabinetMetier{
     private Connection conn;
 
-    public IMetierImpl() {
+    public ICabinetMetierImpl() {
         conn = SingletonConnexionDB.getConnection();
     }
     

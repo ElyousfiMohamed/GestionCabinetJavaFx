@@ -8,6 +8,6 @@ package IMetier;
  *
  * @author ELYOUSFI
  */
-public interface IMetier {
+public interface ICabinetMetier {
     
 }
