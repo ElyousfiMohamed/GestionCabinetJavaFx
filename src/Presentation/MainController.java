@@ -63,7 +63,7 @@ public class MainController implements Initializable {
     private void displayDoctor(MouseEvent event) {
         try {
             Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("doctor.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("medecin.fxml"));
 
             Scene scene = new Scene(root);
 

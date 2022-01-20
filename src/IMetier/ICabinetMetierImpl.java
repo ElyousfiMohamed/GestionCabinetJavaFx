@@ -22,15 +22,70 @@ import javafx.scene.control.Alert;
 public class ICabinetMetierImpl implements ICabinetMetier {
 
     static private Connection conn;
-    static public Patient patient;    
+    static public Patient patient;
     static public Medecin medecin;
     static public Consultation consultation;
-
 
     public ICabinetMetierImpl() {
         conn = SingletonConnexionDB.getConnection();
     }
 
+    public static void updatePatient() {
+        Connection conn = SingletonConnexionDB.getConnection();
+        try {
+            Statement pstn = conn.createStatement();
+            pstn.executeUpdate(
+                    "UPDATE patient SET "
+                    + "NOM_PATIENT = '"
+                    + patient.getNom()
+                    + "',PRENOM_PATIENT = '"
+                    + patient.getPrenom()
+                    + "',CIN_PATIENT = '"
+                    + patient.getCin()
+                    + "',EMAIL_PATIENT = '"
+                    + patient.getEmail()
+                    + "',TELEPHONE_PATIENT = '"
+                    + patient.getTelephone()
+                    + "',DATE_NAISSANCE = '"
+                    + patient.getDate_naissance()
+                    + "' WHERE ID_PATIENT = "
+                    + patient.getId());
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setContentText("Patient modifié avec succés");
+            alert.show();
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText(e.getMessage());
+            alert.show();
+        }
+    }
+
+    public static void updateMedecin() {
+        Connection conn = SingletonConnexionDB.getConnection();
+        try {
+            Statement pstn = conn.createStatement();
+            pstn.executeUpdate(
+                    "UPDATE medecin SET "
+                    + "NOM_MEDECIN = '"
+                    + medecin.getNom()
+                    + "',PRENOM_MEDECIN = '"
+                    + medecin.getPrenom()
+                    + "',EMAIL_MEDECIN = '"
+                    + medecin.getEmail()
+                    + "',TELE_MEDECIN = '"
+                    + medecin.getTelephone()
+                    + "' WHERE ID_MEDECIN = "
+                    + medecin.getId());
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setContentText("Patient modifié avec succés");
+            alert.show();
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText(e.getMessage());
+            alert.show();
+        }
+    }
+    
     @Override
     public void addPatient(Patient p) {
         try {
@@ -69,12 +124,12 @@ public class ICabinetMetierImpl implements ICabinetMetier {
             while (rs.next()) {
                 Patient p
                         = new Patient(
-                                rs.getInt(1),
-                                rs.getString(2),
-                                rs.getString(3),
-                                rs.getString(4),
-                                rs.getString(5),
-                                rs.getString(6),
+                                rs.getInt("ID_PATIENT"),
+                                rs.getString("NOM_PATIENT"),
+                                rs.getString("PRENOM_PATIENT"),
+                                rs.getString("CIN_PATIENT"),
+                                rs.getString("TELEPHONE_PATIENT"),
+                                rs.getString("EMAIL_PATIENT"),
                                 rs.getDate(7));
                 patients.add(p);
             }
@@ -134,7 +189,7 @@ public class ICabinetMetierImpl implements ICabinetMetier {
         List<Consultation> consultations = new ArrayList<>();
         try {
             Statement pstn = conn.createStatement();
-            ResultSet rs = pstn.executeQuery("SELECT * FROM consultation WHERE ID_PATIENT='"+id+"'");
+            ResultSet rs = pstn.executeQuery("SELECT * FROM consultation WHERE ID_PATIENT='" + id + "'");
             while (rs.next()) {
                 Consultation c
                         = new Consultation(
@@ -249,7 +304,7 @@ public class ICabinetMetierImpl implements ICabinetMetier {
         List<Consultation> consultations = new ArrayList<>();
         try {
             Statement pstn = conn.createStatement();
-            ResultSet rs = pstn.executeQuery("SELECT * FROM consultation WHERE ID_MEDECIN='"+id+"'");
+            ResultSet rs = pstn.executeQuery("SELECT * FROM consultation WHERE ID_MEDECIN='" + id + "'");
             while (rs.next()) {
                 Consultation c
                         = new Consultation(

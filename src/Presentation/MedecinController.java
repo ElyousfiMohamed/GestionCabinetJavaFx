@@ -32,28 +32,26 @@ import javafx.stage.WindowEvent;
  *
  * @author ELYOUSFI
  */
-public class PatientController implements Initializable {
+public class MedecinController implements Initializable {
 
     @FXML
-    private TableView<Patient> tableView = new TableView<>();
+    private TableView<Medecin> tableView = new TableView<>();
     @FXML
-    private TableColumn<Patient, Integer> id;
+    private TableColumn<Medecin, Integer> id;
     @FXML
-    private TableColumn<Patient, String> cin;
+    private TableColumn<Medecin, String> cin;
     @FXML
-    private TableColumn<Patient, String> nom;
+    private TableColumn<Medecin, String> nom;
     @FXML
-    private TableColumn<Patient, String> prenom;
+    private TableColumn<Medecin, String> prenom;
     @FXML
-    private TableColumn<Patient, String> telephone;
+    private TableColumn<Medecin, String> telephone;
     @FXML
-    private TableColumn<Patient, String> email;
+    private TableColumn<Medecin, String> email;
     @FXML
     private TextField rechercher;
-    @FXML
-    private TableColumn<Patient, Date> datenaissance;
 
-    private ObservableList<Patient> patients = FXCollections.observableArrayList();
+    private ObservableList<Medecin> medecins = FXCollections.observableArrayList();
 
     /**
      * Initializes the controller class.
@@ -61,15 +59,14 @@ public class PatientController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ICabinetMetier metier = new ICabinetMetierImpl();
-        patients.addAll(metier.getAllPatients());
-        id.setCellValueFactory(new PropertyValueFactory<Patient, Integer>("id"));
-        cin.setCellValueFactory(new PropertyValueFactory<Patient, String>("cin"));
-        nom.setCellValueFactory(new PropertyValueFactory<Patient, String>("nom"));
-        prenom.setCellValueFactory(new PropertyValueFactory<Patient, String>("prenom"));
-        telephone.setCellValueFactory(new PropertyValueFactory<Patient, String>("telephone"));
-        email.setCellValueFactory(new PropertyValueFactory<Patient, String>("email"));
-        datenaissance.setCellValueFactory(new PropertyValueFactory<Patient, Date>("date_naissance"));
-        tableView.setItems(patients);
+        medecins.addAll(metier.getAllMedecins());
+        id.setCellValueFactory(new PropertyValueFactory<Medecin, Integer>("id"));
+        cin.setCellValueFactory(new PropertyValueFactory<Medecin, String>("cin"));
+        nom.setCellValueFactory(new PropertyValueFactory<Medecin, String>("nom"));
+        prenom.setCellValueFactory(new PropertyValueFactory<Medecin, String>("prenom"));
+        telephone.setCellValueFactory(new PropertyValueFactory<Medecin, String>("telephone"));
+        email.setCellValueFactory(new PropertyValueFactory<Medecin, String>("email"));
+        tableView.setItems(medecins);
     }
 
     @FXML
@@ -77,10 +74,10 @@ public class PatientController implements Initializable {
         try {
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("NouveauPatient.fxml"));
+            loader.setLocation(getClass().getResource("NouveauMedecin.fxml"));
             Scene scene = new Scene(loader.load());
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Nouveau Patient");
+            stage.setTitle("Nouveau Medecin");
             stage.setScene(scene);
             stage.show();
             stage.setOnCloseRequest(
@@ -89,8 +86,8 @@ public class PatientController implements Initializable {
                 public void handle(WindowEvent e) {
                     tableView.getItems().clear();
                     ICabinetMetier metier = new ICabinetMetierImpl();
-                    patients.addAll(metier.getAllPatients());
-                    tableView.setItems(patients);
+                    medecins.addAll(metier.getAllMedecins());
+                    tableView.setItems(medecins);
                 }
             });
         } catch (Exception e) {
@@ -104,7 +101,7 @@ public class PatientController implements Initializable {
         if (indice >= 0) {
             try {
                 ICabinetMetier metier = new ICabinetMetierImpl();
-                metier.delPatient(tableView.getItems().get(indice).getId());
+                metier.delMedecin(tableView.getItems().get(indice).getId());
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -122,8 +119,8 @@ public class PatientController implements Initializable {
         tableView.getItems().clear();
 
         ICabinetMetier m = new ICabinetMetierImpl();
-        patients.addAll(m.searchPatient(keyWord));
-        tableView.setItems(patients);
+        medecins.addAll(m.searchMedecin(keyWord));
+        tableView.setItems(medecins);
     }
 
     @FXML
@@ -131,14 +128,14 @@ public class PatientController implements Initializable {
         int indice = tableView.getSelectionModel().getSelectedIndex();
     if (indice >= 0) {
       try {
-        ICabinetMetierImpl.patient = tableView.getItems().get(indice);
+        ICabinetMetierImpl.medecin = tableView.getItems().get(indice);
 
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("UpdatePatient.fxml"));
+        loader.setLocation(getClass().getResource("UpdateMedecin.fxml"));
         Scene scene = new Scene(loader.load());
         stage.setScene(scene);
-        stage.setTitle("modifier client");
+        stage.setTitle("modifier Medecin");
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
         stage.setOnCloseRequest(
@@ -147,8 +144,8 @@ public class PatientController implements Initializable {
                   public void handle(WindowEvent e) {
                     tableView.getItems().clear();
                     ICabinetMetier metier = new ICabinetMetierImpl();
-                    patients.addAll(metier.getAllPatients());
-                    tableView.setItems(patients);
+                    medecins.addAll(metier.getAllMedecins());
+                    tableView.setItems(medecins);
                   }
                 });
       } catch (Exception ex) {

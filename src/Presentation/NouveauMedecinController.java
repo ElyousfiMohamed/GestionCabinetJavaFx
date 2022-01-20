@@ -4,16 +4,15 @@
  */
 package Presentation;
 
+import IMetier.ClassesPersistants.Medecin;
 import IMetier.ClassesPersistants.Patient;
 import IMetier.ICabinetMetier;
 import IMetier.ICabinetMetierImpl;
 import java.net.URL;
-import java.sql.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -23,11 +22,10 @@ import javafx.stage.Stage;
  *
  * @author ELYOUSFI
  */
-public class NouveauPatientController implements Initializable {
+public class NouveauMedecinController implements Initializable {
 
     @FXML
     private AnchorPane rootPane;
-    private TextField cin;
     @FXML
     private TextField nom;
     @FXML
@@ -36,7 +34,6 @@ public class NouveauPatientController implements Initializable {
     private TextField telephone;
     @FXML
     private TextField email;
-    private DatePicker dateNaissance;
 
     /**
      * Initializes the controller class.
@@ -52,32 +49,24 @@ public class NouveauPatientController implements Initializable {
     stage.close();
   }
 
-  void NouveauPatient(ActionEvent event) {
+  @FXML
+  void NouveauMedecin(ActionEvent event) {
     try {
-      java.sql.Date date = Date.valueOf(dateNaissance.valueProperty().get());
       ICabinetMetier metier = new ICabinetMetierImpl();
-      Patient c =
-          new Patient(
+      Medecin c =
+          new Medecin(
               this.nom.getText(),
               this.prenom.getText(),
-              this.cin.getText(),
               this.telephone.getText(),
-              this.email.getText(),
-              date);
-      metier.addPatient(c);
-      this.cin.clear();
+              this.email.getText());
+      metier.addMedecin(c);
       this.nom.clear();
       this.prenom.clear();
       this.telephone.clear();
       this.email.clear();
-      this.dateNaissance.valueProperty().set(null);
     } catch (Exception ex) {
       ex.printStackTrace();
     }
   }
-
-    @FXML
-    private void NouveauMedecin(ActionEvent event) {
-    }
     
 }

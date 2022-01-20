@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane fx:id="rootPane" prefHeight="398.0" prefWidth="481.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.NouveauMedecinController">
+    <children>
+        <GridPane layoutX="52.0" layoutY="42.0" prefHeight="254.0" prefWidth="389.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.0" minWidth="10.0" prefWidth="147.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="329.0" minWidth="10.0" prefWidth="242.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label text="NOM :" GridPane.halignment="CENTER" />
+                <Label text="PRENOM :" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                <Label text="TELEPHONE :" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                <Label text="EMAIL :" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                <TextField fx:id="nom" promptText="NOM" GridPane.columnIndex="1">
+                    <GridPane.margin>
+                        <Insets left="15.0" right="15.0" />
+                    </GridPane.margin>
+                </TextField>
+                <TextField fx:id="prenom" promptText="PRENOM" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <GridPane.margin>
+                        <Insets left="15.0" right="15.0" />
+                    </GridPane.margin>
+                </TextField>
+                <TextField fx:id="telephone" promptText="TELEPHONE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <GridPane.margin>
+                        <Insets left="15.0" right="15.0" />
+                    </GridPane.margin>
+                </TextField>
+                <TextField fx:id="email" promptText="EMAIL" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <GridPane.margin>
+                        <Insets left="15.0" right="15.0" />
+                    </GridPane.margin>
+                </TextField>
+            </children>
+        </GridPane>
+        <GridPane layoutX="82.0" layoutY="326.0" prefHeight="30.0" prefWidth="329.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Button mnemonicParsing="false" onAction="#NouveauMedecin" text="Ajouter" GridPane.halignment="CENTER" />
+                <Button mnemonicParsing="false" onAction="#annuler" text="Annuler" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+            </children>
+        </GridPane>
+    </children>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <stylesheets>
+      <URL value="@ClientSpaceStyle.css" />
+      <URL value="@GlobaleStyle.css" />
+   </stylesheets>
+</AnchorPane>
