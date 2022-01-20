@@ -27,6 +27,7 @@ public class NouveauPatientController implements Initializable {
 
     @FXML
     private AnchorPane rootPane;
+    @FXML
     private TextField cin;
     @FXML
     private TextField nom;
@@ -36,6 +37,7 @@ public class NouveauPatientController implements Initializable {
     private TextField telephone;
     @FXML
     private TextField email;
+    @FXML
     private DatePicker dateNaissance;
 
     /**
@@ -52,7 +54,8 @@ public class NouveauPatientController implements Initializable {
     stage.close();
   }
 
-  void NouveauPatient(ActionEvent event) {
+    @FXML
+  void nouveauPatient(ActionEvent event) {
     try {
       java.sql.Date date = Date.valueOf(dateNaissance.valueProperty().get());
       ICabinetMetier metier = new ICabinetMetierImpl();
@@ -76,8 +79,5 @@ public class NouveauPatientController implements Initializable {
     }
   }
 
-    @FXML
-    private void NouveauMedecin(ActionEvent event) {
-    }
     
 }
