@@ -101,5 +101,14 @@ public class Patient {
         this.email = email;
         this.date_naissance = date_naissance;
     }
+    
+    public Patient(String nom, String prenom, String cin, String telephone, String email) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.cin = cin;
+        this.telephone = telephone;
+        this.email = email;
+        this.date_naissance = date_naissance;
+    }
 
 }

@@ -25,6 +25,13 @@ public class Medecin {
         this.email = email;
         this.telephone = telephone;
     }
+    
+    public Medecin( String nom, String prenom, String email, String telephone) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.telephone = telephone;
+    }
 
     public int getId() {
         return id;
@@ -63,13 +70,6 @@ public class Medecin {
     }
 
     public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    public Medecin(String nom, String prenom, String email, String telephone) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.email = email;
         this.telephone = telephone;
     }
 

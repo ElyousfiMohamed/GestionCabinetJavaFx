@@ -21,7 +21,11 @@ import javafx.scene.control.Alert;
  */
 public class ICabinetMetierImpl implements ICabinetMetier {
 
-    private Connection conn;
+    static private Connection conn;
+    static public Patient patient;    
+    static public Medecin medecin;
+    static public Consultation consultation;
+
 
     public ICabinetMetierImpl() {
         conn = SingletonConnexionDB.getConnection();
@@ -338,14 +342,14 @@ public class ICabinetMetierImpl implements ICabinetMetier {
             ResultSet rs
                     = stm.executeQuery("SELECT * FROM medecin WHERE NOM_MEDECIN LIKE '%" + keyWord + "%'");
             while (rs.next()) {
-                Consultation m
+                Consultation c
                         = new Consultation(
                                 rs.getInt(1),
                                 rs.getDate(4));
 
                 c.setPatient(getPatientById(rs.getInt(2)));
                 c.setMedecin(getMedecinById(rs.getInt(3)));
-                consultations.add(m);
+                consultations.add(c);
             }
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -355,7 +359,7 @@ public class ICabinetMetierImpl implements ICabinetMetier {
         return consultations;
     }
 
-    Patient getPatientById(int id) {
+    static Patient getPatientById(int id) {
         Patient patient = new Patient();
         try {
             Statement stm = conn.createStatement();
@@ -380,7 +384,7 @@ public class ICabinetMetierImpl implements ICabinetMetier {
         return patient;
     }
 
-    Medecin getMedecinById(int id) {
+    static Medecin getMedecinById(int id) {
         Medecin medecin = new Medecin();
         try {
             Statement stm = conn.createStatement();

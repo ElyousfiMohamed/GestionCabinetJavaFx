@@ -20,7 +20,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fitHeight="136.0" fitWidth="127.0" onMouseClicked="#displayClient" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER">
+            <ImageView fitHeight="136.0" fitWidth="127.0" onMouseClicked="#displayPatient" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER">
                <image>
                   <Image url="@images/27705-200.png" />
                </image>
@@ -28,7 +28,7 @@
                   <Insets left="10.0" right="10.0" />
                </GridPane.margin>
             </ImageView>
-            <ImageView fitHeight="129.0" fitWidth="135.0" onMouseClicked="#displayClient" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+            <ImageView fitHeight="129.0" fitWidth="135.0" onMouseClicked="#displayConsultation" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                <image>
                   <Image url="@images/1061802-200.png" />
                </image>
@@ -36,7 +36,7 @@
                   <Insets left="10.0" right="10.0" />
                </GridPane.margin>
             </ImageView>
-            <ImageView fitHeight="121.0" fitWidth="129.0" onMouseClicked="#displayClient" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+            <ImageView fitHeight="121.0" fitWidth="129.0" onMouseClicked="#displayDoctor" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <image>
                   <Image url="@images/doctor_icon.png" />
                </image>
