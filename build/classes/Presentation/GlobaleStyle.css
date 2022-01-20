@@ -1,0 +1,28 @@
+AnchorPane {
+    -fx-background-image: url("background.jpg");
+    -fx-background-repeat: repeat;
+    -fx-background-size: 900 500;
+    -fx-border-color: #BDBDBD;
+    -fx-border-width: 10px;
+}
+
+Button {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-border-radius: 0;
+    -fx-border-width: 2px;
+}
+
+Button:hover {
+    -fx-text-fill: black;
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-radius: 5px;
+}
+
+TextField,PasswordField {
+    -fx-text-fill: #293446;
+    -fx-border-color: #293446;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+}
